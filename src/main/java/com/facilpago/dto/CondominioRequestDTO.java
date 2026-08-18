@@ -1,5 +1,8 @@
 package com.facilpago.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CondominioRequestDTO {
-	 
+	
+	@JsonProperty("cedulaCondomino")
+    @JsonAlias({"cedula", "cedulaCondominio"}) 
     private String cedulaCondomino;
     private String nombreCondomino;
     private String apellidoCondomino;

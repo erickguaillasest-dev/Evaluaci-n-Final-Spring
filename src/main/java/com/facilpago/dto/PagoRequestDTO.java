@@ -15,6 +15,7 @@ public class PagoRequestDTO {
     private Double valorPagoAlicuota;
     private Double valorPagoConsumoServicios;
     private String cedulaCondomino;
+    
 	public LocalDate getFechaPago() {
 		return fechaPago;
 	}

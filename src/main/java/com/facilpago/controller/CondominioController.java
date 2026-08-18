@@ -1,6 +1,6 @@
 package com.facilpago.controller;
 
-import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import com.facilpago.dto.CondominioRequestDTO;
 import com.facilpago.dto.CondominioResponseDTO;
 import com.facilpago.service.CondominioService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/condominios")
@@ -31,8 +29,13 @@ public class CondominioController {
     }
 
     @PostMapping
-    public ResponseEntity<CondominioResponseDTO> guardar(@Valid @RequestBody CondominioRequestDTO request) {
-        return new ResponseEntity<>(condominioService.guardar(request), HttpStatus.CREATED);
+    public ResponseEntity<CondominioResponseDTO> guardar(@RequestBody CondominioRequestDTO request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(condominioService.guardar(request));
+    }
+
+    @PutMapping("/{cedula}")
+    public ResponseEntity<CondominioResponseDTO> actualizar(@PathVariable String cedula, @RequestBody CondominioRequestDTO request) {
+        return ResponseEntity.ok(condominioService.actualizar(cedula, request));
     }
 
     @DeleteMapping("/{cedula}")
