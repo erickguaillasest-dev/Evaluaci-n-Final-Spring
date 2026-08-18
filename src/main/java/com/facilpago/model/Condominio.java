@@ -1,5 +1,7 @@
 package com.facilpago.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -8,17 +10,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "condominio")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Condominio {
 
-	@Id
+    @Id
     @Column(name = "cedula_condomino", length = 10)
     private String cedulaCondomino;
 
@@ -36,71 +36,67 @@ public class Condominio {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "numero_bloque", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Bloque bloque;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "numero_departamento", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Departamento departamento;
 
-	public String getCedulaCondomino() {
-		return cedulaCondomino;
-	}
+    public String getCedulaCondomino() {
+        return cedulaCondomino;
+    }
 
-	public void setCedulaCondomino(String cedulaCondomino) {
-		this.cedulaCondomino = cedulaCondomino;
-	}
+    public void setCedulaCondomino(String cedulaCondomino) {
+        this.cedulaCondomino = cedulaCondomino;
+    }
 
-	public String getNombreCondomino() {
-		return nombreCondomino;
-	}
+    public String getNombreCondomino() {
+        return nombreCondomino;
+    }
 
-	public void setNombreCondomino(String nombreCondomino) {
-		this.nombreCondomino = nombreCondomino;
-	}
+    public void setNombreCondomino(String nombreCondomino) {
+        this.nombreCondomino = nombreCondomino;
+    }
 
-	public String getApellidoCondomino() {
-		return apellidoCondomino;
-	}
+    public String getApellidoCondomino() {
+        return apellidoCondomino;
+    }
 
-	public void setApellidoCondomino(String apellidoCondomino) {
-		this.apellidoCondomino = apellidoCondomino;
-	}
+    public void setApellidoCondomino(String apellidoCondomino) {
+        this.apellidoCondomino = apellidoCondomino;
+    }
 
-	public String getCelularCondomino() {
-		return celularCondomino;
-	}
+    public String getCelularCondomino() {
+        return celularCondomino;
+    }
 
-	public void setCelularCondomino(String celularCondomino) {
-		this.celularCondomino = celularCondomino;
-	}
+    public void setCelularCondomino(String celularCondomino) {
+        this.celularCondomino = celularCondomino;
+    }
 
-	public String getTelefonoCondomino() {
-		return telefonoCondomino;
-	}
+    public String getTelefonoCondomino() {
+        return telefonoCondomino;
+    }
 
-	public void setTelefonoCondomino(String telefonoCondomino) {
-		this.telefonoCondomino = telefonoCondomino;
-	}
+    public void setTelefonoCondomino(String telefonoCondomino) {
+        this.telefonoCondomino = telefonoCondomino;
+    }
 
-	public Bloque getBloque() {
-		return bloque;
-	}
+    public Bloque getBloque() {
+        return bloque;
+    }
 
-	public void setBloque(Bloque bloque) {
-		this.bloque = bloque;
-	}
+    public void setBloque(Bloque bloque) {
+        this.bloque = bloque;
+    }
 
-	public Departamento getDepartamento() {
-		return departamento;
-	}
+    public Departamento getDepartamento() {
+        return departamento;
+    }
 
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
-	}
-
-    
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
 }
- 
- 
-	
-
