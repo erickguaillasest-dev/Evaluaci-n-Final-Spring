@@ -56,7 +56,7 @@ public class CondominioServiceImpl implements CondominioService {
 
         Condominio condominio = new Condominio();
         condominio.setCedulaCondomino(request.getCedulaCondomino());
-        
+
         mapearDatosYEstablecerRelaciones(condominio, request);
 
         Condominio guardado = condominioRepository.save(condominio);
@@ -85,6 +85,13 @@ public class CondominioServiceImpl implements CondominioService {
     }
 
     private void mapearDatosYEstablecerRelaciones(Condominio condominio, CondominioRequestDTO request) {
+        if (request.getNumeroBloque() == null) {
+            throw new IllegalArgumentException("El número de bloque no puede ser nulo.");
+        }
+        if (request.getNumeroDepartamento() == null) {
+            throw new IllegalArgumentException("El número de departamento no puede ser nulo.");
+        }
+
         Bloque bloque = bloqueRepository.findById(request.getNumeroBloque())
                 .orElseThrow(() -> new RuntimeException("Bloque no encontrado ID: " + request.getNumeroBloque()));
 
